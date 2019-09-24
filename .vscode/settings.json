@@ -1,0 +1,7 @@
+{
+  "prettier.eslintIntegration": true,
+  "emmet.includeLanguages": {
+    "javascript": "html"
+},
+"emmet.triggerExpansionOnTab": true
+}
