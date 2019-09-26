@@ -2,13 +2,10 @@ import React from 'react';
 
 export default function Title({ name, title }) {
   return (
-    <div>
-      <div className="row-nowrap text-center">
+    <div className="row">
+      <div className="col-10 mx-auto text-title text-center">
         <h1>
-          <strong className="text-title">
-            {' '}
-            {name} {title}{' '}
-          </strong>
+          {name} {title}
         </h1>
       </div>
     </div>
