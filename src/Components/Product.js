@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Title from './Title';
-import { ProductConsumer } from "../Context";
+import SingleProduct from './SingleProduct';
+import { ProductConsumer } from '../Context';
 
 export default class Product extends Component {
   constructor(props) {
@@ -14,10 +15,12 @@ export default class Product extends Component {
         <div className="py-5">
           <div className="container">
             <Title name="our" title="product" />
-            <div class="row">
+            <div className="row">
               <ProductConsumer>
                 {value => {
-                  return( <h1> {value} </h1> );
+                  return value.storeProducts.map(info => {
+                    return <SingleProduct key={info.id} ProductInfo={info} />;
+                  });
                 }}
               </ProductConsumer>
             </div>
