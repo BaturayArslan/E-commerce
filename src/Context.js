@@ -5,7 +5,7 @@ const ProductContext = React.createContext();
 
 class ProductProvider extends Component {
   state = {
-    storeProducts: storeProducts,
+    storeProducts: [],
     detailProduct: detailProduct,
   };
 
@@ -16,14 +16,25 @@ class ProductProvider extends Component {
   handleDetals = () => {
     console.log(this.state.detailProduct);
   };
-
+  componentDidMount() {
+    this.productHandler();
+  }
+  productHandler = () =>{
+    let tempProduct = [];
+    storeProducts.forEach((item) => {
+      const single = {...item};
+      tempProduct.push(single);
+    });
+    this.setState({
+      storeProducts: tempProduct
+    });
+  }
   render() {
     return (
       <ProductContext.Provider
         value={{
           ...this.state,
           handleProduct: this.handleProduct,
-          detailProduct: this.detailProduct,
         }}
       >
         {this.props.children}

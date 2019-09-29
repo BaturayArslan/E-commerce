@@ -9,7 +9,7 @@
   --backGRound: rgb(241, 243, 245);
   --white: rgb(255, 255, 255);
   --fontGray: #adb5bd;
-  --font-blue: #0b78df;
+  --fontBlue: #0b78df;
   --header-height: 10vh;
 }
 
@@ -23,7 +23,7 @@ body {
   text-transform: uppercase;
 }
 .text-blue {
-  color: var(--font-blue);
+  color: var(--fontBlue);
 }
 header {
   width: 100%;
@@ -60,7 +60,7 @@ nav {
   flex-flow: row nowrap !important;
 }
 .flex {
-  display: flex !important;
+  display: flex;
 }
 .content-center {
   justify-content: center !important;

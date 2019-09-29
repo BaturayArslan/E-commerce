@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
   constructor(props) {
-    super(props);
+  super(props);
     this.state = {};
   }
 
@@ -23,7 +23,7 @@ class App extends Component {
         <Switch>
           <Route path="/" exact component={Product} />
           <Route path="/cart" component={Cart} />
-          <Route path="/details" component={Details} />
+          <Route path="/details/:id" component={Details} />
           <Route path="/product" component={Product} />
         </Switch>
         <Footer />
