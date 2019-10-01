@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { ProductConsumer } from '../Context';
+import { Link } from 'react-router-dom';
+import  { ButtonWrapper }  from './ButtonWrapper';
 
 export default class Details extends Component {
   constructor(props) {
@@ -28,12 +30,15 @@ export default class Details extends Component {
                   </div>
                 </div>
 
-                {/* Product info Part */}
+                {/* Product info Part and Buttons */}
                 <div className="col-10 col-md-6 mx-auto">
                   <h4 class="text-blue"> <strong> Price: ${price} </strong> </h4>
                   <h3 class="text-title mt-3"> Company: {company}</h3>
                   <h2 class="mt-3"> Some info about Product:</h2>
                   <h5 class="text-muted lead ">{info}</h5>
+                  <ButtonWrapper>
+                    hello
+                  </ButtonWrapper>
                 </div>
               </div>
             </div>
