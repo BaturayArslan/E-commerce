@@ -10,12 +10,20 @@ export default class SingleProduct extends Component {
       <ProductWrapper className="col-9 col-md-6 col-lg-3 mx-auto my-3">
           <div className="card">
             <div className="img-container p-4">
+
+              {/* Cart image */}
               <Link to={ `/details/${id} ` }>
                 <img src={img} alt="phone" className="card-img-top" />
               </Link>
-              <button className="card-link" disabled={inCart?true:false} onClick={() => {console.log("hello world")}}>
+              {/* Add Cart Button */}
+              <button
+               className="card-link" 
+               disabled={inCart?true:false} 
+               onClick={() => {this.props.addtocart(id);this.props.openModel(id);}}
+               >
                 {inCart?(<p className="text-capitilazed mb-0">in card</p>):(<span className="fas fa-shopping-cart" />)}
               </button>
+
             </div>
             <div className="card-footer flex content-space-between">
               {title}   <h5 className="text-blue">${price}</h5>
@@ -33,7 +41,9 @@ SingleProduct.propTypes = {
     img:PropTypes.string,
     inCart:PropTypes.bool,
     price:PropTypes.number
-  }).isRequired
+  }).isRequired,
+  addtocart: PropTypes.func.isRequired,
+  openModel: PropTypes.func.isRequired
 }
 
 const ProductWrapper = styled.div`

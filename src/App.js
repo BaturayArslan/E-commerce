@@ -6,6 +6,7 @@ import Footer from './Components/Footer';
 import Product from './Components/Product';
 import Details from './Components/Details';
 import Cart from './Components/Cart';
+import Model from './Components/Model';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -26,6 +27,7 @@ class App extends Component {
           <Route path="/details/:id" component={Details} />
           <Route path="/product" component={Product} />
         </Switch>
+        <Model />
         <Footer />
       </React.Fragment>
     );

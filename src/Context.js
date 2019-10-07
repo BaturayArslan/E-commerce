@@ -7,6 +7,8 @@ class ProductProvider extends Component {
   state = {
     storeProducts: [],
     detailProduct: detailProduct,
+    cart: [],
+    isModelOpen: false,
   };
 
   handleProduct = () => {
@@ -16,9 +18,11 @@ class ProductProvider extends Component {
   handleDetals = () => {
     console.log(this.state.detailProduct);
   };
+  
   componentDidMount() {
     this.productHandler();
-  }
+  } 
+
   productHandler = () =>{
     let tempProduct = [];
     storeProducts.forEach((item) => {
@@ -29,12 +33,51 @@ class ProductProvider extends Component {
       storeProducts: tempProduct
     });
   }
+
+  getProduct = (id) => {
+    const tempProduct = this.state.storeProducts.find(object => {
+      if(object.id === id){
+        return object;
+      }
+    });
+    return tempProduct; 
+  };
+
+  addToCart = (id) => {
+    let tempStore = [...this.state.storeProducts];
+    const index = tempStore.indexOf(this.getProduct(id));
+    const tempProduct = tempStore[index];
+    tempProduct.inCart = true;
+    tempProduct.count = 1;
+    tempProduct.total = tempProduct.count * tempProduct.price;
+    this.setState(() => {
+      return {storeProducts:tempStore}
+    })
+  }
+
+  openModel = (id) => {
+    const obj = this.getProduct(id);
+    this.setState({
+      detailProduct: obj,
+      isModelOpen: true,
+    });
+  }
+
+  closeModel = () => {
+    this.setState({
+      isModelOpen: false
+    })
+  }
+
   render() {
     return (
       <ProductContext.Provider
         value={{
           ...this.state,
           handleProduct: this.handleProduct,
+          addToCart: this.addToCart,
+          openModel: this.openModel,
+          closeModel: this.closeModel
         }}
       >
         {this.props.children}

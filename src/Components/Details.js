@@ -13,7 +13,14 @@ export default class Details extends Component {
     return (
       <ProductConsumer> 
         {value => {
-          const {title, img, inCart, price, company, info} = {...value.detailProduct};
+          const productObj = value.storeProducts.find(object => {
+            if(object.id === parseInt(this.props.match.params.id))
+              return object;
+          });
+          console.log(this.props);
+          const {title, img, inCart, price, company, info, id} = {...productObj};
+   
+
           return(
             <div className="container">
               <div className="row">
@@ -32,12 +39,21 @@ export default class Details extends Component {
 
                 {/* Product info Part and Buttons */}
                 <div className="col-10 col-md-6 mx-auto">
-                  <h4 class="text-blue"> <strong> Price: ${price} </strong> </h4>
-                  <h3 class="text-title mt-3"> Company: {company}</h3>
-                  <h2 class="mt-3"> Some info about Product:</h2>
-                  <h5 class="text-muted lead ">{info}</h5>
-                  <ButtonWrapper>
-                    hello
+                <h4 className="text-blue"> <strong> Price: ${price} </strong> </h4>
+                  <h3 className="text-title mt-3"> Company: {company}</h3>
+                  <h2 className="mt-3"> Some info about Product:</h2>
+                  <h5 className="text-muted lead ">{info}</h5>
+                  <Link to="/">
+                    <ButtonWrapper>
+                      Return Product
+                    </ButtonWrapper>
+                  </Link>
+                  <ButtonWrapper 
+                  cart
+                  disabled={inCart? true:false} 
+                  onClick={() => {value.addToCart(id); value.openModel(id)}} 
+                  >
+                    {inCart? "In Cart": "Add To Cart"}
                   </ButtonWrapper>
                 </div>
               </div>

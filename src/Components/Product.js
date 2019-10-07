@@ -3,6 +3,7 @@ import Title from './Title';
 import SingleProduct from './SingleProduct';
 import { ProductConsumer } from '../Context';
 
+
 export default class Product extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +20,7 @@ export default class Product extends Component {
               <ProductConsumer>
                 {value => {
                   return value.storeProducts.map(info => {
-                    return <SingleProduct key={info.id} ProductInfo={info} />;
+                    return <SingleProduct key={info.id} ProductInfo={info} addtocart={value.addToCart} openModel={value.openModel} />;
                   });
                 }}
               </ProductConsumer>
