@@ -7,7 +7,7 @@ class ProductProvider extends Component {
   state = {
     storeProducts: [],
     detailProduct: detailProduct,
-    cart: [],
+    cart: storeProducts,
     isModelOpen: false,
   };
 
@@ -18,32 +18,32 @@ class ProductProvider extends Component {
   handleDetals = () => {
     console.log(this.state.detailProduct);
   };
-  
+
   componentDidMount() {
     this.productHandler();
-  } 
+  }
 
-  productHandler = () =>{
+  productHandler = () => {
     let tempProduct = [];
-    storeProducts.forEach((item) => {
-      const single = {...item};
+    storeProducts.forEach(item => {
+      const single = { ...item };
       tempProduct.push(single);
     });
     this.setState({
-      storeProducts: tempProduct
+      storeProducts: tempProduct,
     });
-  }
+  };
 
-  getProduct = (id) => {
+  getProduct = id => {
     const tempProduct = this.state.storeProducts.find(object => {
-      if(object.id === id){
+      if (object.id === id) {
         return object;
       }
     });
-    return tempProduct; 
+    return tempProduct;
   };
 
-  addToCart = (id) => {
+  addToCart = id => {
     let tempStore = [...this.state.storeProducts];
     const index = tempStore.indexOf(this.getProduct(id));
     const tempProduct = tempStore[index];
@@ -51,23 +51,23 @@ class ProductProvider extends Component {
     tempProduct.count = 1;
     tempProduct.total = tempProduct.count * tempProduct.price;
     this.setState(() => {
-      return {storeProducts:tempStore}
-    })
-  }
+      return { storeProducts: tempStore };
+    });
+  };
 
-  openModel = (id) => {
+  openModel = id => {
     const obj = this.getProduct(id);
     this.setState({
       detailProduct: obj,
       isModelOpen: true,
     });
-  }
+  };
 
   closeModel = () => {
     this.setState({
-      isModelOpen: false
-    })
-  }
+      isModelOpen: false,
+    });
+  };
 
   render() {
     return (
@@ -77,7 +77,7 @@ class ProductProvider extends Component {
           handleProduct: this.handleProduct,
           addToCart: this.addToCart,
           openModel: this.openModel,
-          closeModel: this.closeModel
+          closeModel: this.closeModel,
         }}
       >
         {this.props.children}

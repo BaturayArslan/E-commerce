@@ -29,23 +29,7 @@ export default class Model extends React.Component {
                         </ButtonWrapper>
                       </Link>
 
-                      <Link to="/cart" >
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                      ""
+                      <Link to="/cart">
                         <ButtonWrapper cart className="mt-1" onClick={() => { value.closeModel(); }} >
                           Cart
                         </ButtonWrapper>
