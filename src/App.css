@@ -90,6 +90,13 @@ nav {
 .mobil {
   display: none;
 }
+.remove-icon{
+  cursor: pointer;
+  margin-top:0.4rem;
+  margin-bottom: 0.4rem;
+  font-size: 1.6rem;
+  color: var(--fontYellow);
+}
 
 @media screen and (max-width: 768px) {
   header .content {

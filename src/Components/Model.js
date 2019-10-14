@@ -10,7 +10,7 @@ export default class Model extends React.Component {
       <ProductConsumer>
         {value => {
           if(value.isModelOpen) {
-            const { id, price, title, img, company } = {...value.detailProduct};
+            const { price, title, img } = {...value.detailProduct};
             console.log(value.detailProduct)
             return(
              <ModelWrapper>

@@ -9,15 +9,21 @@ class ProductProvider extends Component {
     detailProduct: detailProduct,
     cart: storeProducts,
     isModelOpen: false,
+    subTotal: 0,
+    taxTotal: 0,
   };
 
-  handleProduct = () => {
-    console.log('hello world');
-  };
+  increment = (id) => {
+    console.log("this is increment");
+  }
 
-  handleDetals = () => {
-    console.log(this.state.detailProduct);
-  };
+  decrement = (id) => {
+    console.log("this is decrement");
+  }
+
+  removeItem = (id) => {
+    console.log("this is removeItem");
+  }
 
   componentDidMount() {
     this.productHandler();
@@ -49,9 +55,9 @@ class ProductProvider extends Component {
     const tempProduct = tempStore[index];
     tempProduct.inCart = true;
     tempProduct.count = 1;
-    tempProduct.total = tempProduct.count * tempProduct.price;
+    tempProduct.total = tempProduct.price;
     this.setState(() => {
-      return { storeProducts: tempStore };
+      return { storeProducts: tempStore ,cart: [...this.state.cart,tempProduct], };
     });
   };
 
@@ -78,6 +84,9 @@ class ProductProvider extends Component {
           addToCart: this.addToCart,
           openModel: this.openModel,
           closeModel: this.closeModel,
+          increment: this.increment,
+          decrement: this.decrement,
+          removeItem: this.removeItem
         }}
       >
         {this.props.children}

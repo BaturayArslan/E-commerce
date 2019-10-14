@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import Title from '../Title';
 import CartCol from './CartCol';
+import CartList from './CartList';
 import { ProductConsumer } from '../../Context';
 
 export default class Cart extends PureComponent {
@@ -13,6 +14,7 @@ export default class Cart extends PureComponent {
               <div>
                 <Title name="your" title="cart" />
                 <CartCol />
+                <CartList cart={value.cart} value={value} />
               </div>
             );
           } else {

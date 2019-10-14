@@ -22,3 +22,23 @@ export const ButtonWrapper = styled.button`
     outline: none;
   }
 `
+export const BlackButton = styled.button`
+  border: 0.1rem solid;
+  border-color: black;
+  background: transparent;
+  border-radius: 0.4rem;
+  padding: 0.2rem 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: rgba(247,247,247);
+  &:hover{
+    background-color: white;
+    border-color: rgba(0,0,0,0.7);
+  }
+  &:focus{
+    outline:none;
+  }
+
+`
